@@ -6,7 +6,7 @@ describe Oystercard do
   end
 
   it 'starts with a maximum_balance of 90' do
-    expect(subject.maximum_balance).to eq(90)
+    expect(subject.MAXIMUM_BALANCE).to eq(90)
   end
 
   describe '#top_up' do
