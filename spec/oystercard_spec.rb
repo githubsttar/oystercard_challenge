@@ -1,6 +1,8 @@
 require 'oystercard'
+require 'pry'
 
 describe Oystercard do
+
   it 'starts with a balance of 0' do
     expect(subject.balance).to eq(0)
   end
@@ -9,9 +11,12 @@ describe Oystercard do
     expect(subject.in_journey).to eq(false)
   end
 
-  it 'starts with a minimum balance of £1' do
-    expect(subject.MINIMUM_BALANCE).to eq(1)
+  it 'raises an error if the minimum balance is below' do
+    minimum_balance = Oystercard::MINIMUM_BALANCE
+    subject.top_up( - minimum_balance)
+    expect{subject.touch_in}.to raise_error "Cannot touch in. Your card has #{minimum_balance}"
   end
+
 
   it 'raises an error if the maximum balance is exceeded' do
     maximum_balance = Oystercard::MAXIMUM_BALANCE
@@ -42,6 +47,8 @@ describe Oystercard do
 
   describe '#touch_in' do
     it 'changes the status of injourney to true' do
+      minimum_balance = Oystercard::MINIMUM_BALANCE
+      subject.top_up(minimum_balance) + 1
       expect{subject.touch_in}.to change{subject.in_journey}.to (true)
     end
   end
