@@ -36,4 +36,17 @@ describe Oystercard do
     end
   end
 
+  describe '#touch_in' do
+    it 'changes the status of injourney to true' do
+      expect{subject.touch_in}.to change{subject.in_journey}.to (true)
+    end
+  end
+
+  describe '#touch_out' do
+    it 'changes the status of in_journey back to false' do
+      subject.touch_out
+      expect( subject.in_journey ).to eq(false)
+    end
+  end
+
 end
