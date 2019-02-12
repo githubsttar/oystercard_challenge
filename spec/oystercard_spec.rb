@@ -48,7 +48,7 @@ describe Oystercard do
   describe '#touch_in' do
     it 'changes the status of injourney to true' do
       minimum_balance = Oystercard::MINIMUM_BALANCE
-      subject.top_up(minimum_balance) + 1
+      subject.top_up(minimum_balance)
       expect{subject.touch_in}.to change{subject.in_journey}.to (true)
     end
   end
