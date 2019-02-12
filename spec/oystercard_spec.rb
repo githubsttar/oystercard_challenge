@@ -9,6 +9,10 @@ describe Oystercard do
     expect(subject.in_journey).to eq(false)
   end
 
+  it 'starts with a minimum balance of £1' do
+    expect(subject.MINIMUM_BALANCE).to eq(1)
+  end
+
   it 'raises an error if the maximum balance is exceeded' do
     maximum_balance = Oystercard::MAXIMUM_BALANCE
     subject.top_up(maximum_balance)
