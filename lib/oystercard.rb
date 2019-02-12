@@ -1,15 +1,20 @@
+require 'pry'
+
 class Oystercard
 
-  attr_reader :balance, :MAXIMUM_BALANCE
+  MAXIMUM_BALANCE = 90
+  attr_reader :balance
 
   def initialize
     @balance = 0
-    @MAXIMUM_BALANCE = 90
   end
 
   def top_up(amount)
-    fail 'Top up exceeds maximum balance' if amount > @MAXIMUM_BALANCE
-    @balance += 1
+    fail "Maximum balance of #{MAXIMUM_BALANCE} exceeded" if amount + @balance > MAXIMUM_BALANCE
+    @balance += amount
+  end
+
+  def deduct(amount)
   end
 
 end
