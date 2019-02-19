@@ -3,7 +3,6 @@ require 'pry'
 
 describe Oystercard do
 
-  let(:entry_station) { double :station }
   let(:station) { double :station }
 
   it 'starts with a balance of 0' do
@@ -69,5 +68,7 @@ describe Oystercard do
       expect( subject.in_journey ).to eq(false)
     end
   end
+
+
 
 end
